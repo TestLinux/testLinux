@@ -1,5 +1,6 @@
 def modules = [:]
 pipeline {
+    checkout scm 
     agent any
     stages {
         stage('test') {
