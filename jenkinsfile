@@ -1,6 +1,9 @@
 def modules = [:]
 pipeline {
-    checkout scm 
+node {
+    stage('Checkout') {
+        checkout scm
+    }
     agent any
     stages {
         stage('test') {
@@ -12,4 +15,5 @@ pipeline {
             }
         }
     }
+  }
 }
