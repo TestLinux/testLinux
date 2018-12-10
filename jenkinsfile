@@ -1,6 +1,14 @@
-def issue = [fields: [ project: [key: 'DEV'],
-                       summary: 'New JIRA Created from Jenkins.',
-                       description: 'New JIRA Created from Jenkins.',
-                       issuetype: [name: 'Task']]]
-def newIssue = jiraNewIssue issue: issue, site: 'ATMECS JIRA'
-echo newIssue.data.key
+def modules = [:]
+pipeline {
+    agent any
+    stages {
+        stage('test') {
+            steps {
+                script{
+                    modules.first = load "first.groovy"
+                    modules.first.test1()
+                }
+            }
+        }
+    }
+}
