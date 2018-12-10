@@ -1,19 +1,6 @@
-def modules = [:]
-pipeline {
-node {
-    stage('Checkout') {
-        checkout scm
-    }
-    agent any
-    stages {
-        stage('test') {
-            steps {
-                script{
-                    modules.first = load "first.groovy"
-                    modules.first.test1()
-                }
-            }
+def pipeline {
+agent any
+node ('slave') {
+        pipeline = load 'first.groovy' 
         }
-    }
-  }
-}
+   }
